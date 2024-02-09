@@ -58,6 +58,10 @@ class CLI:
         filename = command[1]
         self.stupid_author.import_story(filename)
 
+    def show_the_list_of_stories(self) -> None:
+        print("List of all imported stories:")
+        for i, story in enumerate(self.stupid_author.stories):
+            print(f"{i+1}. {story[0].capitalize()}")
 
 if __name__ == "__main__":
     app = CLI()
