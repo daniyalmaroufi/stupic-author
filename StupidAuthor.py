@@ -71,11 +71,14 @@ class StupidAuthor:
         for genre in genre_scores:
             genre_confidence[genre] = genre_scores[genre] / sum(genre_scores.values())
 
+        common_keywords = self.find_common_keywords(story, predicted_genre)
+
         story_analysis = {
             "genre_number_of_keywords": genre_number_of_keywords,
             "genre_scores": genre_scores,
             "genre_confidence": genre_confidence,
             "predictied_genre": predicted_genre,
+            "common_keywords": common_keywords,
         }
         return story_analysis
 
@@ -90,3 +93,20 @@ class StupidAuthor:
                 file.write(
                     f"{genre}, {story_analysis['genre_number_of_keywords'][genre]}, {story_analysis['genre_confidence'][genre]}\n"
                 )
+            file.write("The common keywords of the story are: ")
+            for i, common_keyword in enumerate(story_analysis["common_keywords"]):
+                if i < len(story_analysis["common_keywords"]) - 1:
+                    file.write(f"{common_keyword[0]}, ")
+                else:
+                    file.write(f"{common_keyword[0]}.\n")
+
+    def find_common_keywords(self, story: list[str], predicted_genre) -> list[tuple]:
+        keywords_occurance = {}
+        for keyword in self.genres[predicted_genre]:
+            keywords_occurance[keyword[0]] = story.count(keyword[0])
+
+        common_keywords = sorted(
+            keywords_occurance.items(), key=lambda item: item[1], reverse=True
+        )[:5]
+
+        return common_keywords

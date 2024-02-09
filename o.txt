@@ -1,0 +1,9 @@
+Story Name: story_name
+Predicted Genre: Romance
+
+Genre, Number of Keywords, Confidence
+Romance, 11, 0.8461538461538461
+Mystery, 2, 0.15384615384615385
+Fantasy, 0, 0.0
+SciFi, 0, 0.0
+The common keywords of the story are: keyword2, keyword4, keyword1, keyword5, keyword3.
