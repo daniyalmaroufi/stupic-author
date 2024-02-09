@@ -51,8 +51,12 @@ class CLI:
         for command in self.COMMANDS:
             print(command)
 
-    def import_story(self) -> None:
-        self.stupid_author.import_story()
+    def import_story(self, command) -> None:
+        if len(command) < 2:
+            print("import_story {story_name.txt}")
+            return
+        filename = command[1]
+        self.stupid_author.import_story(filename)
 
 
 if __name__ == "__main__":

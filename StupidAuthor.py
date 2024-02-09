@@ -1,4 +1,5 @@
 import csv
+import os
 
 from configs import *
 
@@ -21,3 +22,20 @@ class StupidAuthor:
                     self.genres[genre] = genre_keywords
             except:
                 print("Error importing genre keywords. Please check keyword files.")
+
+    def import_story(self, filename: str) -> None:
+        story_name = filename.replace('.txt', '')
+        
+        if(not os.path.isfile(filename)):
+            print("File not found.")
+            return
+        
+        try:
+            with open(filename, "r") as file:
+                story = file.read().split()
+                self.stories.append((story_name, story))
+                print(f"{story_name} imported successfully.")
+
+        except:
+            print("Error importing the story.")
+
