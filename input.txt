@@ -2,8 +2,11 @@ import_story story_name.txt
 import_story story_name.txt
 import_story story_name.txt
 import_story story_name.txt
+show_the_list_of_stories
 analyze_story 1 o.txt
 analyze_story 2 o.txt
 analyze_story 3 o.txt
-analyze_story 4 o.txt
 analyzed_stories_list
+show_story_analysis 1
+show_story_analysis -1
+show_story_analysis 4

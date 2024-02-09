@@ -50,7 +50,7 @@ class StupidAuthor:
         story_name = story[0]
         story = story[1]
         story_analysis = self.analyze(story)
-        self.analyzed_stories.append((story_name, story_analysis))
+        self.analyzed_stories.append((story_name, story_analysis, story_index))
 
         self.dump_analysis(story_name, story_analysis, output_file_name)
         print(
