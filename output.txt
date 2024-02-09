@@ -1,0 +1,44 @@
+Command not found. See the list of commands with show_the_list_of_commands.
+show_the_list_of_commands
+import_story
+show_the_list_of_stories
+analyze_story
+analyzed_stories_list
+show_story_analysis
+dump_analyzed_stories
+exit
+find_the_first_character
+import_story {story_name.txt}
+story_name imported successfully.
+story_name imported successfully.
+story_name imported successfully.
+File not found.
+story_name imported successfully.
+List of all imported stories:
+1. Story_name
+2. Story_name
+3. Story_name
+4. Story_name
+The genre of the story story_name is Romance.
+analyze_story {story_index} {output_file_name.txt}
+Invalid story index.
+Invalid story index.
+The genre of the story story_name is Romance.
+The genre of the story story_name is Romance.
+The analyzed stories are: Story_name, story_name, story_name and story_name.
+Story Name: story_name
+Predicted Genre: Romance
+Genre, Number of Keywords, Confidence
+Romance, 11, 0.8461538461538461
+Mystery, 2, 0.15384615384615385
+Fantasy, 0, 0.0
+SciFi, 0, 0.0
+The common keywords of the story are: keyword2, keyword4, keyword1, keyword5, keyword3.
+show_story_analysis {story_index}
+Invalid story index.
+This story has not been analyzed yet. Please use the analyze_story command.
+Invalid story index.
+All analyzed stories dumped in o.csv.
+dump_analyzed_stories {output_file_name.csv}
+The first character of story_name is Name.
+find_the_first_character {story_index}

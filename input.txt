@@ -1,14 +1,25 @@
+test
+show_the_list_of_commands
+import_story
 import_story story_name.txt
 import_story story_name.txt
 import_story story_name.txt
+import_story story_name
 import_story story_name.txt
 show_the_list_of_stories
 analyze_story 1 o.txt
+analyze_story
+analyze_story -1 o.txt
+analyze_story 12 o.txt
 analyze_story 2 o.txt
 analyze_story 3 o.txt
 analyzed_stories_list
 show_story_analysis 1
+show_story_analysis
 show_story_analysis -1
 show_story_analysis 4
+show_story_analysis 41
 dump_analyzed_stories o.csv
+dump_analyzed_stories
 find_the_first_character 1
+find_the_first_character
