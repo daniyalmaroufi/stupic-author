@@ -2,6 +2,7 @@
 from StupidAuthor import StupidAuthor
 from configs import *
 
+
 class CLI:
     COMMANDS = (
         "show_the_list_of_commands",
@@ -20,10 +21,18 @@ class CLI:
 
     def run(self) -> None:
         while True:
-            command = input().split()
-            if command[0] == "exit":
+            try:
+                command = input()
+                if not command:
+                    continue
+                command = command.split()
+                if command[0] == "exit":
+                    break
+                self.handle_command(command)
+            except EOFError:
                 break
-            self.handle_command(command)
+            except KeyboardInterrupt:
+                break
 
     def handle_command(self, command: list[str]) -> None:
         if command[0] == "show_the_list_of_commands":
@@ -33,7 +42,7 @@ class CLI:
         elif command[0] == "show_the_list_of_stories":
             self.show_the_list_of_stories()
         elif command[0] == "analyze_story":
-            self.analyze_story()
+            self.analyze_story(command)
         elif command[0] == "analyzed_stories_list":
             self.analyzed_stories_list()
         elif command[0] == "show_story_analysis":
@@ -51,7 +60,7 @@ class CLI:
         for command in self.COMMANDS:
             print(command)
 
-    def import_story(self, command) -> None:
+    def import_story(self, command: list[str]) -> None:
         if len(command) < 2:
             print("import_story {story_name.txt}")
             return
@@ -62,6 +71,18 @@ class CLI:
         print("List of all imported stories:")
         for i, story in enumerate(self.stupid_author.stories):
             print(f"{i+1}. {story[0].capitalize()}")
+
+    def analyze_story(self, command: list[str]) -> None:
+        if len(command) < 3:
+            print("analyze_story {story_index} {output_file_name.txt}")
+            return
+        story_index = int(command[1]) - 1
+        
+        if story_index < 0 or story_index >= len(self.stupid_author.stories):
+            print("Invalid story index.")
+            return
+        self.stupid_author.analyze_story(story_index, command[2])
+
 
 if __name__ == "__main__":
     app = CLI()

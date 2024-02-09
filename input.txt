@@ -1,0 +1,2 @@
+import_story story_name.txt
+analyze_story 1 o.txt
