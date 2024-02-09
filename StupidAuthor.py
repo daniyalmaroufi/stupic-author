@@ -11,11 +11,13 @@ class StupidAuthor:
 
     def import_genres(self):
         for genre in GENRES:
-            with open(GENREPATH + genre + ".csv", "r") as file:
-                genre_keywords = []
-                csv_reader = csv.DictReader(file, delimiter=',')
-                for row in csv_reader:
-                    genre_keywords.append(row)
-                
-                self.genres[genre] = genre_keywords
-
+            try:
+                with open(GENREPATH + genre + ".csv", "r") as file:
+                    genre_keywords = []
+                    csv_reader = csv.DictReader(file, delimiter=',')
+                    for row in csv_reader:
+                        genre_keywords.append(row)
+                    
+                    self.genres[genre] = genre_keywords
+            except:
+                print("Error importing genre keywords. Please check keyword files.")
