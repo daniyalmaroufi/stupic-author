@@ -110,3 +110,15 @@ class StupidAuthor:
         )[:5]
 
         return common_keywords
+
+    def dump_analyzed_stories(self, output_file_name: str) -> None:
+
+        if not self.analyzed_stories:
+            print("No analyzed stories to dump.")
+            return
+
+        with open(output_file_name, "w") as file:
+            file.write("Story, Genre, Confidence, Romance Words, Mystery Words, Fantasy Words, SciFi Words, Common Keyword 1, Common Keyword 2, Common Keyword 3, Common Keyword 4\n")
+            for story in self.analyzed_stories:
+                file.write(f"""{story[0]}, {story[1]['predictied_genre']}, {story[1]['genre_confidence'][story[1]['predictied_genre']]}, {story[1]['genre_number_of_keywords']['Romance']},  {story[1]['genre_number_of_keywords']['Mystery']}, {story[1]['genre_number_of_keywords']['Fantasy']}, {story[1]['genre_number_of_keywords']['SciFi']}, {story[1]['common_keywords'][0][0]}, {story[1]['common_keywords'][1][0]}, {story[1]['common_keywords'][2][0]}, {story[1]['common_keywords'][3][0]}\n""")
+        print(f"All analyzed stories dumped in {output_file_name}.")

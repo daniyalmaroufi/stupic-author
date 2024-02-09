@@ -48,7 +48,7 @@ class CLI:
         elif command[0] == "show_story_analysis":
             self.show_story_analysis(command)
         elif command[0] == "dump_analyzed_stories":
-            self.dump_analyzed_stories()
+            self.dump_analyzed_stories(command)
         elif command[0] == "find_the_first_character":
             self.find_the_first_character()
         else:
@@ -100,7 +100,7 @@ class CLI:
             } and {self.stupid_author.analyzed_stories[-1][0]}."""
         )
 
-    def show_story_analysis(self, command) -> None:
+    def show_story_analysis(self, command: list[str]) -> None:
         if len(command) < 2:
             print("show_story_analysis {story_index}")
             return
@@ -134,7 +134,12 @@ class CLI:
                 print(common_keyword[0], end=", ")
             else:
                 print(common_keyword[0], end ='.\n')
-        
+    
+    def dump_analyzed_stories(self, command: list[str]) -> None:
+        if len(command) < 2:
+            print("dump_analyzed_stories {output_file_name.csv}")
+            return
+        self.stupid_author.dump_analyzed_stories(command[1])
 
 if __name__ == "__main__":
     app = CLI()

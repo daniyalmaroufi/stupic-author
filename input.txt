@@ -10,3 +10,4 @@ analyzed_stories_list
 show_story_analysis 1
 show_story_analysis -1
 show_story_analysis 4
+dump_analyzed_stories o.csv
