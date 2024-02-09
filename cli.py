@@ -1,6 +1,6 @@
 #!python3
 from StupidAuthor import StupidAuthor
-
+from configs import *
 
 class CLI:
     COMMANDS = (
@@ -29,7 +29,7 @@ class CLI:
         if command[0] == "show_the_list_of_commands":
             self.show_the_list_of_commands()
         elif command[0] == "import_story":
-            self.import_story()
+            self.import_story(command)
         elif command[0] == "show_the_list_of_stories":
             self.show_the_list_of_stories()
         elif command[0] == "analyze_story":
@@ -50,6 +50,9 @@ class CLI:
     def show_the_list_of_commands(self) -> None:
         for command in self.COMMANDS:
             print(command)
+
+    def import_story(self) -> None:
+        self.stupid_author.import_story()
 
 
 if __name__ == "__main__":
