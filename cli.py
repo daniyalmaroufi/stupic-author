@@ -77,11 +77,23 @@ class CLI:
             print("analyze_story {story_index} {output_file_name.txt}")
             return
         story_index = int(command[1]) - 1
-        
+
         if story_index < 0 or story_index >= len(self.stupid_author.stories):
             print("Invalid story index.")
             return
         self.stupid_author.analyze_story(story_index, command[2])
+
+    def analyzed_stories_list(self) -> None:
+        print(
+            f"""The analyzed stories are: {
+                ', '.join(
+                    [
+                        analyzed_story[0].capitalize() if i == 0 else analyzed_story[0] 
+                        for (i, analyzed_story) in enumerate(self.stupid_author.analyzed_stories[:4])
+                    ]
+                )
+            } and {self.stupid_author.analyzed_stories[-1][0]}."""
+        )
 
 
 if __name__ == "__main__":

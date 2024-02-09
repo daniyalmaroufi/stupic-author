@@ -1,2 +1,9 @@
 import_story story_name.txt
+import_story story_name.txt
+import_story story_name.txt
+import_story story_name.txt
 analyze_story 1 o.txt
+analyze_story 2 o.txt
+analyze_story 3 o.txt
+analyze_story 4 o.txt
+analyzed_stories_list
