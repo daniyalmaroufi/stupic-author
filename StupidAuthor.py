@@ -72,6 +72,7 @@ class StupidAuthor:
             genre_confidence[genre] = genre_scores[genre] / sum(genre_scores.values())
 
         common_keywords = self.find_common_keywords(story, predicted_genre)
+        first_character = self.find_the_first_character(story)
 
         story_analysis = {
             "genre_number_of_keywords": genre_number_of_keywords,
@@ -79,6 +80,7 @@ class StupidAuthor:
             "genre_confidence": genre_confidence,
             "predictied_genre": predicted_genre,
             "common_keywords": common_keywords,
+            "first_character": first_character,
         }
         return story_analysis
 
@@ -122,3 +124,18 @@ class StupidAuthor:
             for story in self.analyzed_stories:
                 file.write(f"""{story[0]}, {story[1]['predictied_genre']}, {story[1]['genre_confidence'][story[1]['predictied_genre']]}, {story[1]['genre_number_of_keywords']['Romance']},  {story[1]['genre_number_of_keywords']['Mystery']}, {story[1]['genre_number_of_keywords']['Fantasy']}, {story[1]['genre_number_of_keywords']['SciFi']}, {story[1]['common_keywords'][0][0]}, {story[1]['common_keywords'][1][0]}, {story[1]['common_keywords'][2][0]}, {story[1]['common_keywords'][3][0]}\n""")
         print(f"All analyzed stories dumped in {output_file_name}.")
+
+    def find_the_first_character(self, story: list[str]):
+        # the first character is the most common capital word in the story
+        characters = {}
+        for word in story:
+            if word[0].isupper():
+                if word in characters:
+                    characters[word] += 1
+                else:
+                    characters[word] = 1
+        if characters:
+            first_character = max(characters, key=characters.get)
+            return first_character
+        
+        return None

@@ -11,3 +11,4 @@ show_story_analysis 1
 show_story_analysis -1
 show_story_analysis 4
 dump_analyzed_stories o.csv
+find_the_first_character 1

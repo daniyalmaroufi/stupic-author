@@ -50,7 +50,7 @@ class CLI:
         elif command[0] == "dump_analyzed_stories":
             self.dump_analyzed_stories(command)
         elif command[0] == "find_the_first_character":
-            self.find_the_first_character()
+            self.find_the_first_character(command)
         else:
             print(
                 "Command not found. See the list of commands with show_the_list_of_commands."
@@ -140,6 +140,29 @@ class CLI:
             print("dump_analyzed_stories {output_file_name.csv}")
             return
         self.stupid_author.dump_analyzed_stories(command[1])
+
+    def find_the_first_character(self, command: list[str]) -> None:
+        if len(command) < 2:
+            print("find_the_first_character {story_index}")
+            return
+        story_index = int(command[1]) - 1
+        
+        if not self.validate_story_index(story_index):
+            return
+        
+        if not story_index in [item[-1] for item in self.stupid_author.analyzed_stories]:
+            print("This story has not been analyzed yet. Please use the analyze_story command.")
+            return
+        
+        story = next(
+            (
+                analyzed_story
+                for analyzed_story in self.stupid_author.analyzed_stories
+                if analyzed_story[2] == story_index
+            ),
+            None,
+        )
+        print(f"The first character of {story[0]} is {story[1]['first_character']}.")
 
 if __name__ == "__main__":
     app = CLI()
